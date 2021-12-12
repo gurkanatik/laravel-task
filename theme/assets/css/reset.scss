@@ -26,6 +26,7 @@ h5{
   line-height:20px;
 }
 a{
+  text-decoration: none;
   @include transition(all .3s);
 }
 ul{
