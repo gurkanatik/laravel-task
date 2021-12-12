@@ -1,0 +1,40 @@
+html{
+  position: relative;
+  height: 100%;
+}
+body{
+  position: relative;
+  height: 100%;
+  font-size:16px;
+  font-family: 'Roboto', sans-serif;
+}
+h1,h2,h3,h4,h5,ul,.form-group{
+  margin-bottom:0;
+}
+h1,h2{
+  font-size:24px;
+  font-weight: 700;
+  line-height:24px;
+}
+h3,h4{
+  font-size:24px;
+  font-weight: 700;
+  line-height:22px;
+}
+h5{
+  font-size:16px;
+  line-height:20px;
+}
+a{
+  @include transition(all .3s);
+}
+ul{
+  padding:0;
+  list-style:none;
+}
+*{
+  &:focus,&:hover{
+    outline: none !important;
+    text-decoration: none !important;
+  }
+}

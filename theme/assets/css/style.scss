@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+@import "../plugins/bootstrap/css/bootstrap.min.css";
+@import "../plugins/fontawesome/css/fontawesome-all.min.css";
+@import "veriables";
+@import "reset";
+body.active{
+  overflow: hidden;
+}
+header{
+  padding: 15px 0;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 85%, rgba(227,231,241,1) 100%);
+}
+.content-box{
+  .mc-nav,
+  .content{
+    min-height: calc(100vh - 88px);
+  }
+
+  .mc-nav{
+    min-width: 330px;
+    padding:15px 0;
+    background-color: #2B4255;
+    text-align: center;
+    color: #fff;
+    .caption{
+      font-size:24px;
+    }
+    a{
+      font-size:18px;
+      padding:15px 10px;
+      color: #E3E7F1;
+      border-bottom:1px solid #E3E7F1;
+      text-decoration: none;
+      font-weight: 700;
+      &.mc-sp-button{
+        margin-top: 15px;
+        padding:10px 25px;
+        border-bottom: none;
+        background-color: #E3E7F1;
+        color: #2B4255;
+        @include border(40px);
+      }
+      &:hover{
+        background-color: #4f6578;
+      }
+    }
+    @include transition(left .3s);
+  }
+  .content{
+    width: 100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 85%, rgba(227,231,241,1) 100%);
+  }
+}
+
+@media (max-width: 767px) {
+  .content-box{
+    .mc-nav{
+      position: fixed;
+      width: 100%;
+      left: -100%;
+      top: 88px;
+      &.active{
+        left:0;
+      }
+    }
+  }
+}
