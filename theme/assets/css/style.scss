@@ -82,6 +82,20 @@ header{
       }
     }
   }
+  .categories{
+    padding: 0 50px;
+    .category{
+      padding: 15px 15px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #2B4255;
+      border-bottom: 3px solid #2B4255;
+    }
+  }
+  .mc-caption{
+    font-size: 32px;
+    color: #2B4255;
+  }
 }
 
 @media (max-width: 767px) {
@@ -93,6 +107,11 @@ header{
       top: 88px;
       &.active{
         left:0;
+      }
+    }
+    .content{
+      .blog-section{
+        padding: 0;
       }
     }
   }
