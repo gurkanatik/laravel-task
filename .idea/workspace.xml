@@ -131,12 +131,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/minticity/resources/views/pages/category" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/minticity/resources/views/pages" />
     <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/minticity/resources/views/pages" />
+      <recent name="$PROJECT_DIR$/minticity/app/Models" />
+      <recent name="$PROJECT_DIR$/minticity/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/minticity/resources/views/pages/category" />
     </key>
   </component>

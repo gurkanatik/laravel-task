@@ -37,6 +37,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation($request);
         Category::create($request->post());
         return redirect()->route('category.create')->withSuccess('Kategori başarıyla eklendi');
     }
@@ -76,6 +77,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validation($request);
+
         Category::where('id', $id)
             ->update($request->except('_method', '_token'));
         return redirect()->route('category.index')->withSuccess('Başarıyla güncellendi!');
@@ -95,5 +98,14 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->withSuccess('Başarıyla silindi');
         }
         return false;
+    }
+
+    private function validation($request)
+    {
+        return  $validated = $request->validate(
+            [
+                'caption' => 'required|max:255',
+            ]
+        );
     }
 }
