@@ -13,6 +13,7 @@
     <div class="d-flex align-items-stretch justify-content-between">
         @include('includes.navbar')
         <div class="ms-auto content">
+            @include('includes.alert')
             @yield('content')
         </div>
     </div>
