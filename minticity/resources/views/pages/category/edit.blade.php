@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     <div class="d-flex justify-content-center pt-4 mt-4">
-        <h1 class="mc-caption">Yeni Kategori</h1>
+        <h1 class="mc-caption">{{ $category->caption }}</h1>
     </div>
     <div class="row">
         <div class="col-12 col-sm-4 mx-auto mt-4 pt-4">

@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('includes.navbar', CategoryComposer::class);
+        View::composer(['includes.navbar', 'pages.blog.create', 'pages.blog.edit'], CategoryComposer::class);
     }
 }

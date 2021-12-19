@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Blog;
 
-class CategoryController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'DESC')->get();
-        return view('pages/category/index', compact('categories'));
+        $blogs = Blog::orderBy('id', 'DESC')->get();
+        return view('pages.blog.index', compact('blogs'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('pages/category/create');
+        return view('pages/blog/create');
     }
 
     /**
@@ -37,8 +37,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->post());
-        return redirect()->route('category.create')->withSuccess('Kategori başarıyla eklendi');
+        $image = uniqid() . '-' . slugify($request->post('caption')) . '.' . $request->img->extension();
+        $request->img->move(public_path('images'), $image);
+        $request->merge(['img' => $image]);
+
+        Blog::create($request->post());
+        return redirect()->route('blog.create')->withSuccess('Blog başarıyla eklendi');
     }
 
     /**
@@ -49,10 +53,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $blogs = Blog::orderBy('id', 'DESC')->where('category_id', $id)->get();
-        $category = Category::find($id);
-
-        return view('pages.category.show', compact(['blogs', 'category']));
+        $blog = Blog::find($id);
+        $category = Category::find($blog->category_id);
+        return view('pages.blog.show', compact(['blog', 'category']));
     }
 
     /**
@@ -63,8 +66,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('pages/category/edit', compact('category'));
+        $blog = Blog::find($id);
+        return view('pages/blog/edit', compact('blog'));
     }
 
     /**
@@ -76,9 +79,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Category::where('id', $id)
+        if ($request->hasFile('img')) {
+            $image = uniqid() . '-' . slugify($request->post('caption')) . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $image);
+            $request->merge(['img' => $image]);
+        }
+
+        Blog::where('id', $id)
             ->update($request->except('_method', '_token'));
-        return redirect()->route('category.index')->withSuccess('Başarıyla güncellendi!');
+        return redirect()->route('blog.index')->withSuccess('Başarıyla güncellendi!');
     }
 
     /**

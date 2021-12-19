@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::resource('category', CategoryController::class);
 Route::get('category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::resource('blog', BlogController::class);
+Route::get('blog/destroy/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
