@@ -37,6 +37,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation($request);
         $image = uniqid() . '-' . slugify($request->post('caption')) . '.' . $request->img->extension();
         $request->img->move(public_path('images'), $image);
         $request->merge(['img' => $image]);
@@ -79,6 +80,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validation($request);
         if ($request->hasFile('img')) {
             $image = uniqid() . '-' . slugify($request->post('caption')) . '.' . $request->img->extension();
             $request->img->move(public_path('images'), $image);
@@ -104,5 +106,18 @@ class BlogController extends Controller
             return redirect()->route('category.index')->withSuccess('Başarıyla silindi');
         }
         return false;
+    }
+
+    private function validation($request)
+    {
+        $validate_data = [
+            'caption' => 'required|max:255',
+            'description' => 'required',
+        ];
+
+        if ($request->hasFile('img')) {
+            $validate_data['img'] = 'mimes:jpg,jpeg,png,webp|max:2048';
+        }
+        return $validated = $request->validate($validate_data);
     }
 }
